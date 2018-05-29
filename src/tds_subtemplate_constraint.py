@@ -5,19 +5,7 @@ Created on Tue May 29 02:24:51 2018
 
 @author: qiu
 """
-
-def getGraphEdgeList(graph):
-    return graph.edges
-
-def getGraphEdgeLabelList(graph):
-    graphEdgeList=[]
-    for edge in graph.edges:
-        vertex1, vertex2=edge
-        graphEdgeList.append((graph.nodes[vertex1]['label'], graph.nodes[vertex2]['label']))
-    return graphEdgeList
-
-def formatEdgeTuple(edgeTuple):
-    return '('+str(edgeTuple[0])+','+str(edgeTuple[1])+')'
+from graphUtils import *
 
 class TdsSubtemplateConstraint():
     def __init__(self, subgraph):
