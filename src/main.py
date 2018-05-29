@@ -7,8 +7,7 @@ Created on Mon May 28 20:55:34 2018
 """
 import os, sys
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
-import networkx as nx
-from collections import *
+import argparse 
 
 import utils
 import local_constraint
@@ -50,14 +49,22 @@ def main(inputPatternEdges, inputPatternVertexData, outputResultDirectory):
     tdsSubtemplateConstraintList=tds_subtemplate_constraint.generateTdsSubtemplateConstraint(pattern)
     tds_subtemplate_constraint.writeTdsSubtemplatecConstraint(outputResultDirectory, tdsSubtemplateConstraintList)
 
-# TEST
-# TEST
-main('data/test2/patterns/pattern_edge', \
-     'data/test2/patterns/pattern_vertex_data', \
-     'data/test2/results/')
-main('data/test1/patterns/pattern_edge', \
-     'data/test1/patterns/pattern_vertex_data', \
-     'data/test1/results/')
-
 if __name__ == '__main__':
-    print('')
+    parser = argparse.ArgumentParser(prog='main.py', description='Generate constraint for pattern matching.')
+    parser.add_argument('-ie', '--input_pattern_edges', help='Input pattern edges', required=True)
+    parser.add_argument('-id', '--input_pattern_data', help='Input pattern vertex data', required=True)
+    parser.add_argument('-o', '--output_directory', help='Output directory', required=True)
+    try :
+        args=parser.parse_args()
+        
+        inputPatternEdges=args.input_pattern_edges
+        inputPatternVertexData=args.input_pattern_data
+        outputDirectory=args.output_directory
+        if(outputDirectory[-1]!='/' or outputDirectory[-1]!='\\' ):
+            outputDirectory=outputDirectory+'/'
+            
+        main(inputPatternEdges, inputPatternVertexData, outputDirectory)
+    except SystemExit:
+        pass
+        
+    
