@@ -1,1 +1,1 @@
-length ;edge label list; edge vertex list
+length ;edge label list; edge vertex list; initial vertex list

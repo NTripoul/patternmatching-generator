@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Tue May 29 02:00:08 2018
-
-@author: qiu
-"""
 from collections import *
 from graphUtils import *
 
@@ -17,14 +12,14 @@ class TdsCyclicConstraint():
     def __init__(self, subgraph, fromMerge):
         
         self.size=subgraph.number_of_nodes()
-        self.subgraph=subgraph
+        self.subgraph=subgraph.copy()
         self.fromMerge=fromMerge
                 
     def __str__(self):
         return 'length : \t{}\nedge label list : \t{}\nedge vertex list : \t{}\n'.format(\
                 str(self.size),\
-                ' '.join(map(formatEdgeTuple, getGraphEdgeList(self.subgraph))),\
-                ' '.join(map(formatEdgeTuple, getGraphEdgeLabelList(self.subgraph))))
+                ' '.join(map(formatEdgeTuple, getGraphEdgeLabelList(self.subgraph))),\
+                ' '.join(map(formatEdgeTuple, getGraphEdgeList(self.subgraph))))
     def __rpr__(self):
         return self.__str__()
     
@@ -34,8 +29,8 @@ class TdsCyclicConstraint():
     def getCsv(self):
         return '{};{};{}\n'.format(\
                 str(self.size),\
-                ' '.join(map(formatEdgeTuple, getGraphEdgeList(self.subgraph))),\
-                ' '.join(map(formatEdgeTuple, getGraphEdgeLabelList(self.subgraph))))
+                ' '.join(map(formatEdgeTuple, getGraphEdgeLabelList(self.subgraph))),\
+                ' '.join(map(formatEdgeTuple, getGraphEdgeList(self.subgraph))))
 
 def generateTdsCyclicConstraint(pattern, circleConstraintList):
     tdsCyclicConstraintDeque=deque([TdsCyclicConstraint(circleConstraint.getSubgraph(pattern), False)\
@@ -45,7 +40,7 @@ def generateTdsCyclicConstraint(pattern, circleConstraintList):
     while currentIndex!= len(tdsCyclicConstraintDeque):
         nextIndex=currentIndex+1
         while nextIndex!= len(tdsCyclicConstraintDeque):
-            if not isGraphIntersectionEmpty(tdsCyclicConstraintDeque[currentIndex].subgraph,\
+            if not isGraphEdgeIntersectionEmpty(tdsCyclicConstraintDeque[currentIndex].subgraph,\
                                          tdsCyclicConstraintDeque[nextIndex].subgraph):
                 mergedSubgraph=graphUnion(tdsCyclicConstraintDeque[currentIndex].subgraph,\
                                             tdsCyclicConstraintDeque[nextIndex].subgraph)

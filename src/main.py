@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Mon May 28 20:55:34 2018
-
-@author: qiu
-"""
 import os, sys
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 import argparse 

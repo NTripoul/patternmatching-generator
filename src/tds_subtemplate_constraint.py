@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Tue May 29 02:24:51 2018
-
-@author: qiu
-"""
 from graphUtils import *
 
 class TdsSubtemplateConstraint():
@@ -16,8 +11,8 @@ class TdsSubtemplateConstraint():
     def __str__(self):
         return 'length : \t{}\nedge label list : \t{}\nedge vertex list : \t{}\n'.format(\
                 str(self.size),\
-                ' '.join(map(formatEdgeTuple, getGraphEdgeList(self.subgraph))),\
-                ' '.join(map(formatEdgeTuple, getGraphEdgeLabelList(self.subgraph))))
+                ' '.join(map(formatEdgeTuple, getGraphEdgeLabelList(self.subgraph))),\
+                ' '.join(map(formatEdgeTuple, getGraphEdgeList(self.subgraph))))
     def __rpr__(self):
         return self.__str__()
     
@@ -27,8 +22,8 @@ class TdsSubtemplateConstraint():
     def getCsv(self):
         return '{};{};{}\n'.format(\
                 str(self.size),\
-                ' '.join(map(formatEdgeTuple, getGraphEdgeList(self.subgraph))),\
-                ' '.join(map(formatEdgeTuple, getGraphEdgeLabelList(self.subgraph))))
+                ' '.join(map(formatEdgeTuple, getGraphEdgeLabelList(self.subgraph))),\
+                ' '.join(map(formatEdgeTuple, getGraphEdgeList(self.subgraph))))
 
 def generateTdsSubtemplateConstraint(pattern):
     return [TdsSubtemplateConstraint(pattern)]

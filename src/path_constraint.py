@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Tue May 29 00:34:55 2018
-
-@author: qiu
-"""
 
 class PathConstraint():
     def __init__(self, labelList, vertexList):
@@ -15,13 +10,13 @@ class PathConstraint():
         #  + vertexList[0]<vertexList[-1] 
         # This is used to test equality between constraint
             
-        reverse=(vertexList[-1]>vertexList[0])
+        reverse=(vertexList[0]>vertexList[-1])
         if reverse :  
             self.labelList=list(reversed(labelList))
             self.vertexList=list(reversed(vertexList))
         else:
-            self.labelList=labelList
-            self.vertexList=vertexList
+            self.labelList=list(labelList)
+            self.vertexList=list(vertexList)
             
     def getSubgraph(self, pattern):
         return  pattern.subgraph(self.vertexList)

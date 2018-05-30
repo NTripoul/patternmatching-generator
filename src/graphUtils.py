@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Tue May 29 02:29:07 2018
-
-@author: qiu
-"""
-
 def getGraphEdgeList(graph):
     return graph.edges
 
@@ -19,7 +13,7 @@ def getGraphEdgeLabelList(graph):
 def formatEdgeTuple(edgeTuple):
     return '('+str(edgeTuple[0])+','+str(edgeTuple[1])+')'
 
-def isGraphIntersectionEmpty(graph1,graph2):    
+def isGraphEdgeIntersectionEmpty(graph1,graph2):    
     if graph1.number_of_edges()<=graph2.number_of_edges():
         for e in graph1.edges():
             if graph2.has_edge(*e):
@@ -27,6 +21,18 @@ def isGraphIntersectionEmpty(graph1,graph2):
     else:
         for e in graph2.edges():
             if graph1.has_edge(*e):
+                return False
+
+    return True
+
+def isGraphVertexIntersectionEmpty(graph1,graph2, omitList=[]):    
+    if graph1.number_of_nodes()<=graph2.number_of_nodes():
+        for vertex in graph1.nodes():
+            if (not vertex in omitList) and graph2.has_node(vertex):
+                return False
+    else:
+        for vertex in graph2.nodes():
+            if (not vertex in omitList) and graph1.has_node(vertex):
                 return False
 
     return True
