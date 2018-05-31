@@ -32,9 +32,9 @@ class TdsCyclicConstraint():
                 ' '.join(map(formatEdgeTuple, getGraphEdgeLabelList(self.subgraph))),\
                 ' '.join(map(formatEdgeTuple, getGraphEdgeList(self.subgraph))))
 
-def generateTdsCyclicConstraint(pattern, circleConstraintList):
-    tdsCyclicConstraintDeque=deque([TdsCyclicConstraint(circleConstraint.getSubgraph(pattern), False)\
-                                    for circleConstraint in circleConstraintList])
+def generateTdsCyclicConstraint(pattern, cycleConstraintList):
+    tdsCyclicConstraintDeque=deque([TdsCyclicConstraint(cycleConstraint.getSubgraph(pattern), False)\
+                                    for cycleConstraint in cycleConstraintList])
     
     currentIndex=0
     while currentIndex!= len(tdsCyclicConstraintDeque):

@@ -6,7 +6,7 @@ import argparse
 
 import utils
 import local_constraint
-import circle_constraint
+import cycle_constraint
 import path_constraint
 import tds_cyclic_constraint
 import tds_path_constraint
@@ -24,16 +24,16 @@ def main(inputPatternEdges, inputPatternVertexData, outputResultDirectory):
     leafVertexWithUniqueLabelList=utils.findLeafVertexWithUniqueLabel(pattern)
     pattern.remove_nodes_from(leafVertexWithUniqueLabelList)
     
-    # Generate circle constraint
-    circleConstraintList=circle_constraint.generateCircleConstraint(pattern)
-    circle_constraint.writeCircleConstraint(outputResultDirectory, circleConstraintList)
+    # Generate cycle constraint
+    cycleConstraintList=cycle_constraint.generateCycleConstraint(pattern)
+    cycle_constraint.writeCycleConstraint(outputResultDirectory, cycleConstraintList)
     
     # Generate path constraint
     pathConstraintList=path_constraint.generatePathConstraint(pattern)
     path_constraint.writePathConstraint(outputResultDirectory, pathConstraintList)
     
     # Generate TDS edge monocyclic constraint
-    tdsCyclicConstraintList=tds_cyclic_constraint.generateTdsCyclicConstraint(pattern, circleConstraintList)
+    tdsCyclicConstraintList=tds_cyclic_constraint.generateTdsCyclicConstraint(pattern, cycleConstraintList)
     tds_cyclic_constraint.writeTdsCyclicConstraint(outputResultDirectory, tdsCyclicConstraintList)
     
     # Generate TDS path constraint
