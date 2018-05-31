@@ -13,6 +13,16 @@ def getGraphEdgeLabelList(graph):
 def formatEdgeTuple(edgeTuple):
     return '('+str(edgeTuple[0])+','+str(edgeTuple[1])+')'
 
+def isGraphEdgeDifferenceEmpty(graph1,graph2):    
+    if graph1.number_of_edges()!=graph2.number_of_edges():
+        return False
+    
+    for e in graph1.edges():
+        if not graph2.has_edge(*e):
+            return True
+
+    return False
+
 def isGraphEdgeIntersectionEmpty(graph1,graph2):    
     if graph1.number_of_edges()<=graph2.number_of_edges():
         for e in graph1.edges():

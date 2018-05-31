@@ -41,7 +41,7 @@ def main(inputPatternEdges, inputPatternVertexData, outputResultDirectory):
     tds_path_constraint.writeTdsPathConstraint(outputResultDirectory, tdsPathConstraintList)
     
     # Generate TDS partial constraint
-    tdsSubtemplateConstraintList=tds_subtemplate_constraint.generateTdsSubtemplateConstraint(pattern)
+    tdsSubtemplateConstraintList=tds_subtemplate_constraint.generateTdsSubtemplateConstraint(tdsCyclicConstraintList, tdsPathConstraintList)
     tds_subtemplate_constraint.writeTdsSubtemplatecConstraint(outputResultDirectory, tdsSubtemplateConstraintList)
 
 if __name__ == '__main__':
