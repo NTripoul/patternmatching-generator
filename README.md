@@ -59,14 +59,14 @@ The file `cycle_constraint.txt` contains the output of the cycle generation algo
 
 A list of all of the cycles in the pattern is computed. From each vertex of the pattern, a Depth-First-Search is done. A list of the visited vertex is kept in memory to avoid backtracking. When the Depth-First-Search reaches the same vertex it originated from a cycle is created. 
 
-To avoid duplicate cycle in the cycle list, an equality operator is defined, and the vertex list $(\mathcal{C}_i)$ of the constraint is ordered. The order is made such as  :
-* $\mathcal{C}_0$ is the minimal index of the vertex list
-* $\mathcal{C}_1<\mathcal{C}_{last}$
+To avoid duplicate cycle in the cycle list, an equality operator is defined, and the vertex list ![$(\mathcal{C}_i)$](http://latex.codecogs.com/gif.latex?%24%28%5Cmathcal%7BC%7D_i%29%24) of the constraint is ordered. The order is made such as  :
+* ![$\mathcal{C}_0$](http://latex.codecogs.com/gif.latex?%24%5Cmathcal%7BC%7D_0%24) is the minimal index of the vertex list
+* ![$\mathcal{C}_1<\mathcal{C}_{last}$](http://latex.codecogs.com/gif.latex?%24%5Cmathcal%7BC%7D_1%3C%5Cmathcal%7BC%7D_%7Blast%7D%24)
 
-Finally the equality operator implies the equality of the size of the constraint and of the elements of the constraint:
-$\mathcal{C}^A=\mathcal{C}^B \iff |\mathcal{C}^A|=|\mathcal{C}^B|\land(\forall i, \mathcal{C}^A_i=\mathcal{C}^B_i)$ 
+Finally the equality operator implies the equality of the size of the constraint and of the elements of the constraint: ![$\mathcal{C}^A=\mathcal{C}^B \iff |\mathcal{C}^A|=|\mathcal{C}^B|\land(\forall i, \mathcal{C}^A_i=\mathcal{C}^B_i)$ ](http://latex.codecogs.com/gif.latex?%24%5Cmathcal%7BC%7D%5EA%3D%5Cmathcal%7BC%7D%5EB%20%5Ciff%20%7C%5Cmathcal%7BC%7D%5EA%7C%3D%7C%5Cmathcal%7BC%7D%5EB%7C%5Cland%28%5Cforall%20i%2C%20%5Cmathcal%7BC%7D%5EA_i%3D%5Cmathcal%7BC%7D%5EB_i%29%24)
 
-We could also check that $\mathcal{C}^A=\mathcal{C}^B \iff\mathcal{C}^A\oplus\mathcal{C}^B=\emptyset$.
+
+We could also check that ![$\mathcal{C}^A=\mathcal{C}^B \iff\mathcal{C}^A\oplus\mathcal{C}^B=\emptyset$](http://latex.codecogs.com/gif.latex?%24%5Cmathcal%7BC%7D%5EA%3D%5Cmathcal%7BC%7D%5EB%20%5Ciff%5Cmathcal%7BC%7D%5EA%5Coplus%5Cmathcal%7BC%7D%5EB%3D%5Cemptyset%24) .
 
 ### Path constraint
 The file `path_constraint.txt` contains the output of the path generation algorithm.
